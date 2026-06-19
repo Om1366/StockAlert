@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const dashboardRoute = require("./routes/dashboard");
+
 const stocksRoute = require("./routes/stocks");
 
 const app = express();
@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/stocks", stocksRoute);
-app.use("/api/dashboard", dashboardRoute);
+
 app.get("/", (req, res) => {
   res.send("StockAlert Backend Running");
 });
