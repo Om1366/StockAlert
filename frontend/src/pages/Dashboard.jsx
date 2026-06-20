@@ -1,6 +1,23 @@
 import { Link } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 function Dashboard() {
+
+const [stats, setStats] = useState({
+    totalStocks: 0,
+    totalAlerts: 0
+  });
+
+  useEffect(() => {
+    axios
+      .get("http://13.206.124.22:3001/api/dashboard")
+      .then((res) => {
+        setStats(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div style={{ padding: "20px" }}>
       <h1>📈 StockAlert Dashboard</h1>
@@ -15,7 +32,7 @@ function Dashboard() {
           padding: "20px",
           borderRadius: "10px"
         }}>
-          <h2>12</h2>
+          <h2>{stats.totalStocks}</h2>
           <p>Total Stocks</p>
         </div>
 
@@ -24,7 +41,7 @@ function Dashboard() {
           padding: "20px",
           borderRadius: "10px"
         }}>
-          <h2>5</h2>
+          <h2>{stats.totalAlerts}</h2>
           <p>Total Reports</p>
         </div>
 
@@ -41,9 +58,10 @@ function Dashboard() {
       <br />
 
       <Link to="/stocks">📊 Manage Stocks</Link>
-
       <br /><br />
 
+      <Link to="/alerts">🚨 Stock Alerts</Link>
+      <br /><br />
       <Link to="/reports">📁 Manage Reports</Link>
     </div>
   );

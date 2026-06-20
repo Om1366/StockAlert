@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Stocks from "./pages/Stocks";
 import Reports from "./pages/Reports";
-
+import Alerts from "./pages/Alerts";
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +13,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/stocks" element={<Stocks />} />
         <Route path="/reports" element={<Reports />} />
+        <Route path="/alerts" element={<Alerts />} />
       </Routes>
     </BrowserRouter>
   );

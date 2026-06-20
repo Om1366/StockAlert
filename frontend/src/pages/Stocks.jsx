@@ -6,8 +6,9 @@ function Stocks() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/stocks")
+      .get("http://13.206.124.22:3001/api/stocks")
       .then((res) => {
+        console.log(res.data);
         setStocks(res.data);
       })
       .catch((err) => {
@@ -26,6 +27,7 @@ function Stocks() {
           </li>
         ))}
       </ul>
+
     </div>
   );
 }
